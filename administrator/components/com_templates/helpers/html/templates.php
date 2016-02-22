@@ -19,7 +19,7 @@ class JHtmlTemplates
 	/**
 	 * Display the thumb for the template.
 	 *
-	 * @param   string	 $template  The name of the template.
+	 * @param   string   $template  The name of the template.
 	 * @param   integer  $clientId  The application client ID the template applies to
 	 *
 	 * @return  string  The html string
@@ -55,7 +55,7 @@ class JHtmlTemplates
 	/**
 	 * Renders the html for the modal linked to thumb.
 	 *
-	 * @param   string	 $template  The name of the template.
+	 * @param   string   $template  The name of the template.
 	 * @param   integer  $clientId  The application client ID the template applies to
 	 *
 	 * @return  string  The html string
@@ -79,8 +79,10 @@ class JHtmlTemplates
 				$footer = '<button class="btn" data-dismiss="modal" aria-hidden="true">'
 					. JText::_('JTOOLBAR_CLOSE') . '</a>';
 
-				$html .= JHtmlBootstrap::renderModal(
-					$template . '-Modal', array(
+				$html .= JHtml::_(
+					'bootstrap.renderModal',
+					$template . '-Modal',
+					array(
 						'title' => JText::_('COM_TEMPLATES_BUTTON_PREVIEW'),
 						'height' => '500px',
 						'width' => '800px',

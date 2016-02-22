@@ -33,8 +33,8 @@ class JFormFieldModal_Newsfeed extends JFormField
 	 */
 	protected function getInput()
 	{
-		$allowEdit		= ((string) $this->element['edit'] == 'true') ? true : false;
-		$allowClear		= ((string) $this->element['clear'] != 'false') ? true : false;
+		$allowEdit  = ((string) $this->element['edit'] == 'true') ? true : false;
+		$allowClear = ((string) $this->element['clear'] != 'false') ? true : false;
 
 		// Load language
 		JFactory::getLanguage()->load('com_newsfeeds', JPATH_ADMINISTRATOR);
@@ -93,8 +93,8 @@ class JFormFieldModal_Newsfeed extends JFormField
 		JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 
 		// Setup variables for display.
-		$html	= array();
-		$link	= 'index.php?option=com_newsfeeds&amp;view=newsfeeds&amp;layout=modal&amp;tmpl=component&amp;function=jSelectNewsfeed_' . $this->id;
+		$html = array();
+		$link = 'index.php?option=com_newsfeeds&amp;view=newsfeeds&amp;layout=modal&amp;tmpl=component&amp;function=jSelectNewsfeed_' . $this->id;
 
 		if (isset($this->element['language']))
 		{
@@ -147,16 +147,18 @@ class JFormFieldModal_Newsfeed extends JFormField
 			. '<span class="icon-file"></span> ' . JText::_('JSELECT')
 			. '</a>';
 
-		$html[] = JHtmlBootstrap::renderModal(
-						'modalNewsfeed' . $this->id, array(
-							'url' => $link . '&amp;' . JSession::getFormToken() . '=1"',
-							'title' => JText::_('COM_NEWSFEEDS_CHANGE_FEED_BUTTON'),
-							'width' => '800px',
-							'height' => '300px',
-							'footer' => '<button class="btn" data-dismiss="modal" aria-hidden="true">'
-								. JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>'
-						)
-					);
+		$html[] = JHtml::_(
+			'bootstrap.renderModal',
+			'modalNewsfeed' . $this->id,
+			array(
+				'url' => $link . '&amp;' . JSession::getFormToken() . '=1"',
+				'title' => JText::_('COM_NEWSFEEDS_CHANGE_FEED_BUTTON'),
+				'width' => '800px',
+				'height' => '300px',
+				'footer' => '<button class="btn" data-dismiss="modal" aria-hidden="true">'
+					. JText::_("JLIB_HTML_BEHAVIOR_CLOSE") . '</button>'
+			)
+		);
 
 		// Edit newsfeed button
 		if ($allowEdit)
@@ -176,7 +178,7 @@ class JFormFieldModal_Newsfeed extends JFormField
 
 		$html[] = '</span>';
 
-		// class='required' for client side validation
+		// Add class='required' for client side validation
 		$class = '';
 
 		if ($this->required)
